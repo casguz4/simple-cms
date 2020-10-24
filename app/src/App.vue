@@ -1,32 +1,78 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-navigation-drawer app v-model="drawer" left>
+      <v-list nav>
+        <v-subheader>Menu</v-subheader>
+
+        <v-list-item-group v-model="activeNav" color="primary">
+          <v-list-item
+            v-for="({ name, icon, path }, i) in navLinks"
+            :key="i"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon :text="icon">{{ icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <router-link :to="path" class="router-link">
+                <v-list-item-title :text="name">{{ name }}</v-list-item-title>
+              </router-link>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Simple CMS</v-toolbar-title>
+    </v-app-bar>
+
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <!-- If using vue-router -->
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+
+    <v-footer app>
+      <!-- -->
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: 'App',
 
-#nav {
-  padding: 30px;
+  components: {},
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  data() {
+    return {
+      drawer: false,
+      navLinks: [],
+      activeNav: 0,
+    };
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  // mounted() {
+  //   this.navLinks = this.$router.options.routes;
+  // },
+  created() {
+    this.navLinks = this.$router.options.routes.map((el) => ({
+      icon: el.meta.icon,
+      name: el.name,
+      path: el.path,
+    }));
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+a[class*="router-link"] {
+  text-decoration: none;
 }
 </style>

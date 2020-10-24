@@ -1,0 +1,6 @@
+{
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.detectIndentation": true,
+    "javascript.preferences.quoteStyle": "single",
+    "vetur.format.defaultFormatter.js": "none"
+}

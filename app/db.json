@@ -1,0 +1,69 @@
+{
+    "pages": [
+        {
+            "id": 1,
+            "title": "Home",
+            "meta": {
+                "icon": "mdi-home",
+                "description": "Lorem ispum dolor",
+                "keywords": "Home CMS simple easy"
+            },
+            "order": 0,
+            "children": [],
+            "parentId": null,
+            "widgets": {}
+        },
+        {
+            "id": 2,
+            "title": "About",
+            "meta": {
+                "icon": "mdi-question",
+                "description": "",
+                "keywords": ""
+            },
+            "order": 1,
+            "children": [],
+            "parentId": null,
+            "widgets": {}
+        },
+        {
+            "id": 3,
+            "title": "Services",
+            "meta": {
+                "icon": "mdi-question",
+                "description": "",
+                "keywords": ""
+            },
+            "order": 1,
+            "children": [4, 5],
+            "parentId": null,
+            "widgets": {}
+        },
+        {
+            "id": 4,
+            "title": "Services",
+            "meta": {
+                "icon": "",
+                "description": "",
+                "keywords": ""
+            },
+            "order": 0,
+            "children": [],
+            "parentId": 3,
+            "widgets": {}
+        },
+        {
+            "id": 5,
+            "title": "Services",
+            "meta": {
+                "icon": "",
+                "description": "",
+                "keywords": ""
+            },
+            "order": 1,
+            "children": [4, 5],
+            "parentId": 3,
+            "widgets": {}
+        }
+    ]
+}
